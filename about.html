@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于我们 - 作文查重系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#4F46E5", secondary: "#6366F1" },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-white min-h-screen">
+  <main>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex gap-8">
+        <div class="w-64 flex-shrink-0">
+          <div class="sticky top-24">
+            <nav class="space-y-1">
+              <a href="#company"
+                class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-50 hover:text-primary">公司简介</a>
+              <a href="#terms"
+                class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-50 hover:text-primary">服务条款</a>
+              <a href="#privacy"
+                class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-50 hover:text-primary">隐私政策</a>
+            </nav>
+          </div>
+        </div>
+        <div class="flex-1">
+          <section id="company" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">公司简介</h2>
+            <div class="prose max-w-none">
+              <p class="text-gray-600 leading-relaxed mb-8">
+                我们是一家专注于教育科技创新的企业，成立于 2020
+                年。公司致力于为广大师生提供智能化的教育解决方案，通过先进的人工智能技术，帮助学生提升学习效率，助力教师提高教学质量。
+              </p>
+              <div class="grid grid-cols-3 gap-8 mb-12">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                  <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                    <i class="ri-user-heart-line text-primary text-2xl"></i>
+                  </div>
+                  <h3 class="text-lg font-semibold mb-2">以人为本</h3>
+                  <p class="text-gray-600">
+                    始终将用户需求放在首位，提供优质服务体验
+                  </p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                  <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                    <i class="ri-lightbulb-line text-primary text-2xl"></i>
+                  </div>
+                  <h3 class="text-lg font-semibold mb-2">创新驱动</h3>
+                  <p class="text-gray-600">持续技术创新，引领教育科技发展</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                  <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-4">
+                    <i class="ri-shield-star-line text-primary text-2xl"></i>
+                  </div>
+                  <h3 class="text-lg font-semibold mb-2">品质保证</h3>
+                  <p class="text-gray-600">严格把控服务质量，确保用户满意</p>
+                </div>
+              </div>
+              <div class="relative">
+                <div class="absolute left-0 w-2 bg-gray-200 h-full rounded-full"></div>
+                <div class="space-y-8 relative">
+                  <div class="flex items-center">
+                    <div class="absolute left-0 w-2 h-2 bg-primary rounded-full -translate-x-[3px]"></div>
+                    <div class="ml-8">
+                      <h4 class="text-lg font-semibold mb-2">2020 年</h4>
+                      <p class="text-gray-600">
+                        公司成立，推出首个作文查重系统
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="absolute left-0 w-2 h-2 bg-primary rounded-full -translate-x-[3px]"></div>
+                    <div class="ml-8">
+                      <h4 class="text-lg font-semibold mb-2">2022 年</h4>
+                      <p class="text-gray-600">
+                        服务用户突破 100 万，获得 A 轮融资
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="absolute left-0 w-2 h-2 bg-primary rounded-full -translate-x-[3px]"></div>
+                    <div class="ml-8">
+                      <h4 class="text-lg font-semibold mb-2">2024 年</h4>
+                      <p class="text-gray-600">
+                        推出全新 AI 智能评分系统，获得教育部认证
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="terms" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">服务条款</h2>
+            <div class="space-y-8">
+              <div class="bg-white shadow-sm rounded-lg p-6">
+                <h3 class="text-xl font-semibold mb-4">1. 服务说明</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  本系统提供作文查重服务，用户可以通过在线提交文本或上传文档的方式使用查重功能。系统将对提交的内容进行分析，并生成相应的查重报告。
+                </p>
+              </div>
+              <div class="bg-white shadow-sm rounded-lg p-6">
+                <h3 class="text-xl font-semibold mb-4">2. 用户责任</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  用户应确保提交的内容不侵犯他人知识产权，不包含违法违规信息。用户需对提交的内容承担法律责任。
+                </p>
+              </div>
+              <div class="bg-white shadow-sm rounded-lg p-6">
+                <h3 class="text-xl font-semibold mb-4">3. 服务费用</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  用户需按照系统显示的价格支付相应的服务费用。费用一经支付，不予退还。
+                </p>
+              </div>
+            </div>
+          </section>
+          <section id="privacy" class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">隐私政策</h2>
+            <div class="bg-white shadow-sm rounded-lg p-6">
+              <div class="space-y-6">
+                <div>
+                  <h3 class="text-xl font-semibold mb-4">信息收集</h3>
+                  <p class="text-gray-600 leading-relaxed">
+                    我们收集的信息包括但不限于：用户注册信息、使用记录、支付信息等。这些信息用于提供服务和改善用户体验。
+                  </p>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-4">信息使用</h3>
+                  <p class="text-gray-600 leading-relaxed">
+                    我们承诺对用户提交的作文内容严格保密，不会用于其他商业用途。用户的个人信息仅用于提供服务和必要的系统通知。
+                  </p>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-4">信息保护</h3>
+                  <p class="text-gray-600 leading-relaxed">
+                    我们采用业界领先的加密技术和安全措施保护用户信息，防止未经授权的访问、使用或泄露。
+                  </p>
+                </div>
+              </div>
+              <div class="mt-8 text-sm text-gray-500">
+                最后更新时间：2025 年 2 月 25 日
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="about.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">公司简介</a>
+            </li>
+            <li>
+              <a href="about.html#terms" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">服务条款</a>
+            </li>
+            <li>
+              <a href="about.html#privacy" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">隐私政策</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">常见问题</a>
+            </li>
+            <li>
+              <a href="help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">使用教程</a>
+            </li>
+            <li>
+              <a href="help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">联系客服</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">商务合作</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">机构合作</a>
+            </li>
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">教师合作</a>
+            </li>
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">学校合作</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+          <ul class="space-y-2">
+            <li class="text-gray-600">客服电话：15625076252</li>
+            <li class="text-gray-600">工作时间：10:00-17:00</li>
+            <li class="text-gray-600">邮箱：724063132@qq.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t pt-8 text-center text-gray-500">
+        <p>© 2025 笔墨鉴真 版权所有</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop"
+    class="fixed bottom-8 right-24 z-50 bg-white text-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 border border-gray-200 hidden">
+    <i class="ri-arrow-up-line text-2xl"></i>
+  </button>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const backToTopButton = document.getElementById("backToTop");
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("hidden");
+        } else {
+          backToTopButton.classList.add("hidden");
+        }
+      });
+      backToTopButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+          const offset = 80;
+          const targetPosition =
+            targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

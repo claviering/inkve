@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>笔墨鉴真</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    .custom-file-input::-webkit-file-upload-button {
+      display: none;
+    }
+
+    .custom-file-input::file-selector-button {
+      display: none;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4F46E5",
+            secondary: "#6366F1",
+          },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-white min-h-screen">
+  <nav class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <img src="/logo.svg" class="h-8" alt="">
+        </div>
+        <div class="flex items-center">
+          <button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-opacity-90"
+            onclick="window.location.href='/login.html'">
+            登录/注册
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          笔墨鉴真
+        </h1>
+        <p class="text-lg text-gray-600">
+          专业的中小学作文查重平台，为您提供准确、快速的查重服务
+        </p>
+      </div>
+      <div class="bg-white shadow-lg rounded-lg p-8 mb-12">
+        <div class="mb-6">
+          <textarea
+            class="w-full h-64 p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            placeholder="请在此处粘贴您需要查重的作文内容..."></textarea>
+          <div class="flex justify-between mt-2 text-sm text-gray-500">
+            <span>当前字数：<span id="wordCount">0</span></span>
+            <span>支持格式：doc, docx, txt（文件大小不超过 10MB）</span>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <div class="relative">
+            <input type="file" class="custom-file-input absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              accept=".doc,.docx,.txt" />
+            <button
+              class="bg-white border border-primary text-primary px-6 py-2 !rounded-button hover:bg-primary hover:text-white flex items-center">
+              <i class="ri-upload-line mr-2"></i>上传文档
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <div class="border rounded-lg p-4">
+            <h3 class="text-lg font-semibold mb-2">小学作文查重</h3>
+            <p class="text-sm text-gray-500">适用于小学生作文查重</p>
+          </div>
+          <div class="border rounded-lg p-4">
+            <h3 class="text-lg font-semibold mb-2">初中作文查重</h3>
+            <p class="text-sm text-gray-500">适用于初中生作文查重</p>
+          </div>
+          <div class="border rounded-lg p-4">
+            <h3 class="text-lg font-semibold mb-2">高中作文查重</h3>
+            <p class="text-sm text-gray-500">适用于高中生作文查重</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="bg-primary text-white px-8 py-3 text-lg !rounded-button hover:bg-opacity-90">
+            开始查重
+          </button>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-8 mb-16">
+        <h2 class="text-2xl font-bold text-center mb-8">使用步骤</h2>
+        <div class="flex justify-between items-center">
+          <div class="text-center flex-1">
+            <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm">
+              <span class="text-2xl font-bold text-primary">1</span>
+            </div>
+            <h3 class="font-semibold mb-2">上传文本</h3>
+            <p class="text-gray-600">粘贴或上传需要查重的作文</p>
+          </div>
+          <div class="w-24 h-px bg-gray-300"></div>
+          <div class="text-center flex-1">
+            <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm">
+              <span class="text-2xl font-bold text-primary">2</span>
+            </div>
+            <h3 class="font-semibold mb-2">开始查重</h3>
+            <p class="text-gray-600">点击按钮开始查重分析</p>
+          </div>
+          <div class="w-24 h-px bg-gray-300"></div>
+          <div class="text-center flex-1">
+            <div class="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-sm">
+              <span class="text-2xl font-bold text-primary">4</span>
+            </div>
+            <h3 class="font-semibold mb-2">获取报告</h3>
+            <p class="text-gray-600">系统生成详细查重报告</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-4 gap-8 mb-16">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+            <i class="ri-check-double-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">准确率99%</h3>
+          <p class="text-gray-600">采用先进算法，确保查重结果准确可靠</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+            <i class="ri-timer-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">极速查重</h3>
+          <p class="text-gray-600">3分钟内完成查重，快速出具报告</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+            <i class="ri-shield-check-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">安全保密</h3>
+          <p class="text-gray-600">严格保护用户隐私，确保数据安全</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+            <i class="ri-file-list-3-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">详细报告</h3>
+          <p class="text-gray-600">提供全面的查重分析报告</p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="about.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">公司简介</a>
+            </li>
+            <li>
+              <a href="about.html#terms" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">服务条款</a>
+            </li>
+            <li>
+              <a href="about.html#privacy" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">隐私政策</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">常见问题</a>
+            </li>
+            <li>
+              <a href="help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">使用教程</a>
+            </li>
+            <li>
+              <a href="help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">联系客服</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">商务合作</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">机构合作</a>
+            </li>
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">教师合作</a>
+            </li>
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">学校合作</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+          <ul class="space-y-2">
+            <li class="text-gray-600">客服电话：15625076252</li>
+            <li class="text-gray-600">工作时间：10:00-17:00</li>
+            <li class="text-gray-600">邮箱：724063132@qq.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t pt-8 text-center text-gray-500">
+        <p>© 2025 笔墨鉴真 版权所有</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const textarea = document.querySelector("textarea");
+      const wordCountElement = document.getElementById("wordCount");
+      textarea.addEventListener("input", function () {
+        const wordCount = this.value.length;
+        wordCountElement.textContent = wordCount;
+      });
+      document
+        .querySelector(".bg-primary.text-white.px-8")
+        .addEventListener("click", function () {
+          if (!textarea.value.trim()) {
+            const dialog = document.createElement("div");
+            dialog.className =
+              "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+            dialog.innerHTML = `
+      <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-semibold">提示</h3>
+      <button class="text-gray-500 hover:text-gray-700">
+      <i class="ri-close-line text-xl"></i>
+      </button>
+      </div>
+      <p class="text-gray-600 mb-4">请输入需要查重的文本内容</p>
+      <button class="w-full bg-primary text-white py-2 !rounded-button hover:bg-opacity-90">确定</button>
+      </div>
+      `;
+            document.body.appendChild(dialog);
+            dialog
+              .querySelector("button")
+              .addEventListener("click", () => dialog.remove());
+            return;
+          }
+          const resultDialog = document.createElement("div");
+          resultDialog.className =
+            "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50";
+          resultDialog.innerHTML = `
+      <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4">
+      <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-semibold">查重结果报告</h3>
+      <button class="text-gray-500 hover:text-gray-700">
+      <i class="ri-close-line text-xl"></i>
+      </button>
+      </div>
+      <div class="mb-6">
+      <div class="flex items-center justify-between mb-4">
+      <span class="text-lg font-semibold">总体相似度</span>
+      <span class="text-2xl font-bold text-primary">15.6%</span>
+      </div>
+      <div class="h-2 bg-gray-200 rounded-full">
+      <div class="h-2 bg-primary rounded-full" style="width: 15.6%"></div>
+      </div>
+      </div>
+      <div class="mb-6">
+      <h4 class="text-lg font-semibold mb-4">相似内容分析</h4>
+      <div class="space-y-4">
+      <div class="border rounded-lg p-4">
+      <div class="flex justify-between mb-2">
+      <span class="text-gray-600">原文片段</span>
+      <span class="text-primary">相似度: 85%</span>
+      </div>
+      <p class="mb-2">${textarea.value.slice(0, 100)}...</p>
+      <div class="text-gray-500">
+      <p>相似来源：《某某作文》- 发表于 2024-12-01</p>
+      </div>
+      </div>
+      <div class="border rounded-lg p-4">
+      <div class="flex justify-between mb-2">
+      <span class="text-gray-600">原文片段</span>
+      <span class="text-primary">相似度: 65%</span>
+      </div>
+      <p class="mb-2">${textarea.value.slice(100, 200)}...</p>
+      <div class="text-gray-500">
+      <p>相似来源：《范文精选》- 发表于 2024-11-15</p>
+      </div>
+      </div>
+      </div>
+      </div>
+      <div class="flex gap-4">
+      <button class="flex-1 bg-primary text-white py-2 !rounded-button hover:bg-opacity-90">
+      <i class="ri-download-line mr-2"></i>下载报告
+      </button>
+      <button class="flex-1 border border-gray-200 py-2 !rounded-button hover:bg-gray-50">
+      <i class="ri-printer-line mr-2"></i>打印报告
+      </button>
+      </div>
+      </div>
+      `;
+          document.body.appendChild(resultDialog);
+          resultDialog
+            .querySelector("button")
+            .addEventListener("click", () => resultDialog.remove());
+        });
+    });
+  </script>
+</body>
+
+</html>

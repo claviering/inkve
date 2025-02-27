@@ -1,0 +1,10 @@
+<svg  viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 钢笔元素 - 进一步放大和居中 -->
+  <path d="M40 170 L40 50 L100 10 L160 50 L160 80" stroke="#2c3e50" stroke-width="8" stroke-linecap="round" fill="none" />
+  
+  <!-- 验证标记/对勾 - 放大并重新定位 -->
+  <path d="M50 115 L90 155 L160 65" stroke="#4F46E5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  
+  <!-- 墨水滴 - 调整位置 -->
+  <circle cx="40" cy="185" r="10" fill="#4F46E5" />
+</svg>

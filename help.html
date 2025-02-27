@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>帮助中心</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4F46E5",
+            secondary: "#6366F1",
+          },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .faq-content.active {
+      max-height: 500px;
+    }
+
+    .faq-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-arrow.active {
+      transform: rotate(180deg);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .search-results {
+      display: none;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .back-to-top {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <header class="flex flex-col md:flex-row justify-between items-center mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-6 md:mb-0">帮助中心</h1>
+      <div class="relative w-full md:w-96">
+        <input type="text" id="search" placeholder="搜索问题..."
+          class="w-full px-4 py-2 pr-10 border border-gray-200 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm" />
+        <div class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+          <i class="ri-search-line"></i>
+        </div>
+        <div id="searchResults"
+          class="search-results absolute top-full left-0 right-0 mt-2 bg-white rounded shadow-lg border border-gray-100 z-10">
+        </div>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section class="bg-white p-6 rounded-lg shadow-sm">
+        <h2 class="text-xl font-semibold mb-6 flex items-center">
+          <i class="ri-question-line mr-2 text-primary"></i>
+          常见问题
+        </h2>
+        <div class="space-y-4" id="faqList"></div>
+      </section>
+
+      <section class="bg-white p-6 rounded-lg shadow-sm">
+        <h2 class="text-xl font-semibold mb-6 flex items-center">
+          <i class="ri-book-2-line mr-2 text-primary"></i>
+          使用教程
+        </h2>
+        <div class="space-y-6" id="tutorialList"></div>
+      </section>
+
+      <section class="bg-white p-6 rounded-lg shadow-sm">
+        <h2 class="text-xl font-semibold mb-6 flex items-center">
+          <i class="ri-customer-service-2-line mr-2 text-primary"></i>
+          联系客服
+        </h2>
+        <div class="space-y-4">
+          <button
+            class="w-full flex items-center p-4 rounded-button hover:bg-primary/5 transition-colors border border-gray-100"
+            onclick="showContactModal('online')">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+              <i class="ri-message-3-line text-primary"></i>
+            </div>
+            <div class="flex-1 text-left">
+              <h3 class="font-medium">在线客服</h3>
+              <p class="text-sm text-gray-500">工作时间 9:00-18:00</p>
+            </div>
+          </button>
+          <button
+            class="w-full flex items-center p-4 rounded-button hover:bg-primary/5 transition-colors border border-gray-100"
+            onclick="showContactModal('phone')">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+              <i class="ri-phone-line text-primary"></i>
+            </div>
+            <div class="flex-1 text-left">
+              <h3 class="font-medium">电话支持</h3>
+              <p class="text-sm text-gray-500">400-888-8888</p>
+            </div>
+          </button>
+          <button
+            class="w-full flex items-center p-4 rounded-button hover:bg-primary/5 transition-colors border border-gray-100"
+            onclick="showContactModal('email')">
+            <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+              <i class="ri-mail-line text-primary"></i>
+            </div>
+            <div class="flex-1 text-left">
+              <h3 class="font-medium">邮件支持</h3>
+              <p class="text-sm text-gray-500">support@example.com</p>
+            </div>
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="about.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">公司简介</a>
+            </li>
+            <li>
+              <a href="about.html#terms" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">服务条款</a>
+            </li>
+            <li>
+              <a href="about.html#privacy" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">隐私政策</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">常见问题</a>
+            </li>
+            <li>
+              <a href="help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">使用教程</a>
+            </li>
+            <li>
+              <a href="help.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">联系客服</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">商务合作</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">机构合作</a>
+            </li>
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">教师合作</a>
+            </li>
+            <li>
+              <a href="/coop.html" class="text-gray-600 hover:text-primary" target="_blank" rel="noopener noreferrer">学校合作</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+          <ul class="space-y-2">
+            <li class="text-gray-600">客服电话：15625076252</li>
+            <li class="text-gray-600">工作时间：10:00-17:00</li>
+            <li class="text-gray-600">邮箱：724063132@qq.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t pt-8 text-center text-gray-500">
+        <p>© 2025 笔墨鉴真 版权所有</p>
+      </div>
+    </div>
+  </footer>
+
+  <button onclick="scrollToTop()" id="backToTop"
+    class="back-to-top bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 transition-colors">
+    <i class="ri-arrow-up-line"></i>
+  </button>
+
+  <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-semibold" id="modalTitle"></h3>
+        <button onclick="hideContactModal()" class="text-gray-400 hover:text-gray-600">
+          <i class="ri-close-line text-2xl"></i>
+        </button>
+      </div>
+      <div id="modalContent" class="mb-6"></div>
+      <div class="flex justify-end">
+        <button onclick="hideContactModal()"
+          class="px-4 py-2 bg-gray-100 text-gray-700 rounded-button hover:bg-gray-200 transition-colors">
+          关闭
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const mockData = {
+      faqs: [
+        {
+          question: "如何修改我的账户信息？",
+          answer:
+            "登录后点击右上角的个人头像，进入「个人中心」，即可修改您的账户信息，包括昵称、头像等基本信息。",
+        },
+        {
+          question: "忘记密码怎么办？",
+          answer:
+            "点击登录页面的「忘记密码」，输入您的注册手机号或邮箱，按照提示步骤进行密码重置。如果仍然无法解决，请联系客服协助。",
+        },
+        {
+          question: "如何确保账户安全？",
+          answer:
+            "建议您开启两步验证，定期更换密码，不要在不信任的设备上登录账户。如发现账户异常，请立即联系客服。",
+        },
+        {
+          question: "支持哪些支付方式？",
+          answer:
+            "目前支持微信支付、支付宝、银联卡等主流支付方式。对于企业用户，我们还支持对公转账。",
+        },
+        {
+          question: "如何取消订单？",
+          answer:
+            "在订单详情页面，点击「取消订单」按钮。请注意，部分订单状态下可能无法取消，具体以实际操作为准。",
+        },
+      ],
+      tutorials: [
+        {
+          title: "新手入门指南",
+          desc: "5分钟快速了解产品核心功能",
+          image:
+            "https://public.readdy.ai/ai/img_res/1b6226cd4d2f9b1fd838f457d8ca4d73.jpg",
+        },
+        {
+          title: "高级功能教程",
+          desc: "深入了解产品进阶功能",
+          image:
+            "https://public.readdy.ai/ai/img_res/3b34fa5b739cd13c8c30dd0bb771409a.jpg",
+        },
+        {
+          title: "账户安全设置",
+          desc: "如何保护您的账户安全",
+          image:
+            "https://public.readdy.ai/ai/img_res/875aaec467e94925b7fa37f3addcccb5.jpg",
+        },
+      ],
+    };
+
+    function initializePage() {
+      renderFAQs();
+      renderTutorials();
+      initializeSearch();
+      initializeScrollHandler();
+    }
+
+    function renderFAQs() {
+      const faqList = document.getElementById("faqList");
+      mockData.faqs.forEach((faq, index) => {
+        const faqItem = document.createElement("div");
+        faqItem.className = "border border-gray-100 rounded-lg overflow-hidden";
+        faqItem.innerHTML = `
+                          <button class="w-full px-4 py-3 flex justify-between items-center hover:bg-gray-50" onclick="toggleFAQ(${index})">
+                              <span class="font-medium text-left">${faq.question}</span>
+                              <i class="ri-arrow-down-s-line faq-arrow" id="arrow-${index}"></i>
+                          </button>
+                          <div class="faq-content px-4 py-3 bg-gray-50 border-t border-gray-100" id="content-${index}">
+                              <p class="text-gray-600">${faq.answer}</p>
+                          </div>
+                      `;
+        faqList.appendChild(faqItem);
+      });
+    }
+
+    function renderTutorials() {
+      const tutorialList = document.getElementById("tutorialList");
+      mockData.tutorials.forEach((tutorial) => {
+        const tutorialItem = document.createElement("div");
+        tutorialItem.className = "group cursor-pointer";
+        tutorialItem.innerHTML = `
+                          <div class="relative rounded-lg overflow-hidden mb-3">
+                              <img src="${tutorial.image}" alt="${tutorial.title}" class="w-full h-48 object-cover">
+                              <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                          </div>
+                          <h3 class="font-medium mb-1 group-hover:text-primary transition-colors">${tutorial.title}</h3>
+                          <p class="text-sm text-gray-500">${tutorial.desc}</p>
+                      `;
+        tutorialList.appendChild(tutorialItem);
+      });
+    }
+
+    function toggleFAQ(index) {
+      const content = document.getElementById(`content-${index}`);
+      const arrow = document.getElementById(`arrow-${index}`);
+      content.classList.toggle("active");
+      arrow.classList.toggle("active");
+    }
+
+    function initializeSearch() {
+      const searchInput = document.getElementById("search");
+      const searchResults = document.getElementById("searchResults");
+
+      searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase();
+        if (query.length > 0) {
+          const results = mockData.faqs.filter(
+            (faq) =>
+              faq.question.toLowerCase().includes(query) ||
+              faq.answer.toLowerCase().includes(query),
+          );
+          displaySearchResults(results);
+        } else {
+          searchResults.style.display = "none";
+        }
+      });
+    }
+
+    function displaySearchResults(results) {
+      const searchResults = document.getElementById("searchResults");
+      searchResults.style.display = "block";
+      searchResults.innerHTML =
+        results.length > 0
+          ? results
+            .map(
+              (result) => `
+                          <div class="p-3 hover:bg-gray-50 cursor-pointer">
+                              <div class="font-medium">${result.question}</div>
+                              <div class="text-sm text-gray-500 mt-1">${result.answer.substring(0, 100)}...</div>
+                          </div>
+                      `,
+            )
+            .join("")
+          : '<div class="p-3 text-gray-500">未找到相关结果</div>';
+    }
+
+    function showContactModal(type) {
+      const modal = document.getElementById("contactModal");
+      const title = document.getElementById("modalTitle");
+      const content = document.getElementById("modalContent");
+
+      const modalContent = {
+        online: {
+          title: "在线客服",
+          content: `
+                              <div class="text-center">
+                                  <div class="w-32 h-32 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                      <i class="ri-customer-service-2-line text-4xl text-primary"></i>
+                                  </div>
+                                  <p class="mb-4">正在为您接入在线客服，请稍候...</p>
+                                  <p class="text-sm text-gray-500">当前等待人数：3人</p>
+                              </div>
+                          `,
+        },
+        phone: {
+          title: "电话支持",
+          content: `
+                              <div class="text-center">
+                                  <div class="w-32 h-32 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                      <i class="ri-phone-line text-4xl text-primary"></i>
+                                  </div>
+                                  <p class="text-xl font-semibold mb-2">400-888-8888</p>
+                                  <p class="text-sm text-gray-500">工作时间：周一至周五 9:00-18:00</p>
+                              </div>
+                          `,
+        },
+        email: {
+          title: "邮件支持",
+          content: `
+                              <div class="text-center">
+                                  <div class="w-32 h-32 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                                      <i class="ri-mail-line text-4xl text-primary"></i>
+                                  </div>
+                                  <p class="text-xl font-semibold mb-2">support@example.com</p>
+                                  <p class="text-sm text-gray-500">我们将在24小时内回复您的邮件</p>
+                              </div>
+                          `,
+        },
+      };
+
+      title.textContent = modalContent[type].title;
+      content.innerHTML = modalContent[type].content;
+      modal.style.display = "flex";
+    }
+
+    function hideContactModal() {
+      document.getElementById("contactModal").style.display = "none";
+    }
+
+    function initializeScrollHandler() {
+      const backToTop = document.getElementById("backToTop");
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          backToTop.style.display = "block";
+        } else {
+          backToTop.style.display = "none";
+        }
+      };
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.addEventListener("DOMContentLoaded", initializePage);
+  </script>
+</body>
+
+</html>
