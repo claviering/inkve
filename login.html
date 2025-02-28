@@ -53,6 +53,32 @@
     #registerSection {
       width: 33.333%;
     }
+
+    @media (max-width: 640px) {
+      .verification-code-container {
+        /* Remove column layout to maintain row layout */
+      }
+      
+      .verification-code-container input {
+        width: 65%;
+        margin-bottom: 0;
+      }
+      
+      .verification-code-container button {
+        width: 35%;
+        margin-left: 0.5rem !important;
+        font-size: 0.875rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      
+      .toast-notification {
+        width: 90%;
+        max-width: none;
+        left: 5%;
+        right: 5%;
+      }
+    }
   </style>
   <script>
     tailwind.config = {
@@ -78,16 +104,16 @@
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-blue-50 to-white flex flex-col items-center justify-center p-4">
-  <div class="w-full max-w-md">
-    <div class="text-center mb-8 flex items-center justify-center">
-      <img src="/logo.svg" alt="" class="h-12">
-      <p class="text-gray-600 text-2xl ml-2">中小学作文智能查重系统</p>
+  <div class="w-full max-w-md px-4">
+    <div class="text-center mb-8 flex flex-col sm:flex-row items-center justify-center">
+      <img src="/logo.svg" alt="" class="h-12 mb-2 sm:mb-0">
+      <p class="text-gray-600 text-xl sm:text-2xl sm:ml-2">中小学作文智能查重系统</p>
     </div>
     <div class="bg-white rounded-lg shadow-lg relative overflow-hidden" style="min-height: 460px;">
       <div id="formContainer" class="transition-transform duration-500 flex">
-        <div id="forgotPasswordSection" class="w-full flex-shrink-0 p-8">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-6">找回密码</h2>
-          <form id="forgotPasswordForm" class="space-y-6">
+        <div id="forgotPasswordSection" class="w-full flex-shrink-0 p-4 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-6">找回密码</h2>
+          <form id="forgotPasswordForm" class="space-y-4 sm:space-y-6">
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="ri-user-line text-gray-400"></i>
@@ -100,12 +126,12 @@
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="ri-shield-check-line text-gray-400"></i>
               </div>
-              <div class="flex">
+              <div class="flex verification-code-container">
                 <input type="tel" id="verificationCode"
                   class="w-full pl-10 pr-3 py-2 border-2 border-gray-200 rounded-button focus:outline-none focus:border-primary"
                   placeholder="请输入验证码" required />
                 <button type="button"
-                  class="ml-2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded-button whitespace-nowrap">
+                  class="ml-2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-3 rounded-button whitespace-nowrap text-sm sm:text-base">
                   获取验证码
                 </button>
               </div>
@@ -141,9 +167,9 @@
             </p>
           </div>
         </div>
-        <div id="loginSection" class="w-full flex-shrink-0 p-8">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-6">登录账号</h2>
-          <form id="loginForm" class="space-y-6">
+        <div id="loginSection" class="w-full flex-shrink-0 p-4 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-6">登录账号</h2>
+          <form id="loginForm" class="space-y-4 sm:space-y-6">
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="ri-user-line text-gray-400"></i>
@@ -178,9 +204,9 @@
             </p>
           </div>
         </div>
-        <div id="registerSection" class="w-full flex-shrink-0 p-8">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-6">注册账号</h2>
-          <form id="registerForm" class="space-y-6">
+        <div id="registerSection" class="w-full flex-shrink-0 p-4 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-6">注册账号</h2>
+          <form id="registerForm" class="space-y-4 sm:space-y-6">
             <div class="relative">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="ri-user-line text-gray-400"></i>
@@ -229,6 +255,9 @@
           </form>
         </div>
       </div>
+    </div>
+    <div class="mt-4 text-center text-sm text-gray-500">
+      <p>点击"登录"或"注册"即表示您同意我们的<a href="#" class="text-primary">服务条款</a>和<a href="#" class="text-primary">隐私政策</a></p>
     </div>
   </div>
   <script>
@@ -295,7 +324,7 @@
     function showToast(message) {
       const toast = document.createElement("div");
       toast.className =
-        "fixed top-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-y-[-100%]";
+        "fixed top-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-y-[-100%] toast-notification";
       toast.textContent = message;
       document.body.appendChild(toast);
       setTimeout(() => {
