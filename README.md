@@ -9,3 +9,5 @@ node v22
 yarn
 yarn dev
 ```
+
+![demo](./public/demo.png)
